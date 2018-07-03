@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <!--<div class="card-header">
+        <strong>Basic Form</strong> Elements
+      </div>-->
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="text-title">Title</label>
+            <div class="col-md-9">
+              <input type="text" id="text-title" name="text-input" [(ngModel)]="article.title" class="form-control" placeholder="Text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="textarea-input">Caption</label>
+            <div class="col-md-9">
+              <textarea id="textarea-input" name="textarea-input" rows="9" [(ngModel)]="article.caption" class="form-control" placeholder="Content.."></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="text-isPublish">Publish</label>
+            <div class="col-md-9">
+              <input type="text" id="text-isPublish" name="text-input" [(ngModel)]="article.isPublish" class="form-control" placeholder="Text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 form-control-label" for="textarea-input">Content</label>
+            <div class="col-md-9">
+              <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button type="button" (click)="saveArticle()" routerLink="/blog" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa fa-align-justify"></i> Leveling Table
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-sm">
+          <thead>
+          <tr>
+            <th>Level</th>
+            <th>Character Image</th>
+            <th>Character Avatar</th>
+            <th>Leveling Txt</th>
+            <th>Leveling Caption</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let character of characters let i = index">
+            <td>
+              <span >{{character.level}}
+              </span>
+            </td>
+            <td>
+              <span>
+                <span class="badge  badge-secondary" *ngIf="!character.image.selected">
+                  {{character.image.name}}, {{character.image.group}}, {{character.image.level}}
+                </span>
+                <span class="badge  badge-secondary" *ngIf="character.image.selected">
+                  {{character.selected}} Selected
+                </span>
+              </span>
+            </td>
+            <td>
+              <span class="badge  badge-secondary"  *ngIf="!character.avatar.selected">
+                {{character.avatar.name}}, {{character.avatar.group}}, {{character.avatar.level}}
+              </span>
+              <span class="badge  badge-secondary" *ngIf="character.avatar.selected">
+                  {{character.selected}} Selected
+              </span>
+            </td>
+            <td>
+              <span class="badge  badge-secondary" *ngIf="!character.txt.selected">
+                {{character.txt.name}}, {{character.txt.group}}, {{character.txt.level}}
+              </span>
+              <span class="badge  badge-secondary" *ngIf="character.txt.selected">
+                  {{character.txt.selected}} Selected
+              </span>
+            </td>
+            <td>
+              <span class="badge  badge-secondary" *ngIf="!character.caption.selected">
+                {{character.caption.name}}, {{character.caption.group}}, {{character.caption.level}}
+              </span>
+              <span class="badge  badge-secondary" *ngIf="character.caption.selected">
+                  {{character.caption.selected}} Selected
+              </span>
+            </td>
+            <td>
+              <span (click)="editCharacter(character)" class="link">
+                Edit
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa fa-align-justify"></i> Location image
+        </div>
+      </div>
+      <div class="card-body">
+        <img class="locationImage" [src]="characters[0].locationImage" alt="">
+        <div class="image-input">
+            <input type="file" id="file" name="file" (change)="onFileChange($event, 'charLocation')" #fileInput>
+        </div>
+        <button type="button" (click)="upload()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    <div class="card" *ngIf="onEdit">
+      <div class="card-header">
+        <div class="card-title">
+          Level {{chosenCharacter.level}}
+        </div>
+      </div>
+      <div class="card-body">
+        <form action="" #f="ngForm" (ngSubmit)="onSubmit()">
+
+          <h5 class="collapse-header" (click)="showImage = !showImage">Character image</h5>
+
+          <div class="collapse-content" *ngIf="showImage">
+            <div class="radio">
+              <label for="characterImageCustom">
+                <input type="radio" id="characterImageCustom"  [(ngModel)]="model.characterImageCustom" value="custom" name="characterImage" > Custom
+              </label>
+              <label for="characterImageInherit">
+                <input type="radio" id="characterImageInherit"  [(ngModel)]="model.characterImageInherit" value="inherit" name="characterImage" > Inherit
+              </label>
+            </div>
+            <img class="locationImage" [src]="chosenCharacter.charImage" alt="">
+            <div class="image-input">
+              <input type="file" id="file" name="file" (change)="onFileChange($event,'charImage')" #fileInput>
+            </div>
+          </div>
+
+          <h5 class="collapse-header" (click)="showAvatar = !showAvatar">Character avatar</h5>
+
+          <div class="collapse-content" *ngIf="showAvatar">
+            <div class="radio">
+              <label for="characterAvatarCustom">
+                <input type="radio" id="characterAvatarCustom" [(ngModel)]="model.characterAvatarCustom" value="custom" name="characterAvatar"> Custom
+              </label>
+              <label for="characterImageInherit">
+                <input type="radio" id="characterAvatarInherit" [(ngModel)]="model.characterAvatarInherit" value="inherit" name="characterAvatar"> Inherit
+              </label>
+            </div>
+            <img class="locationImage" [src]="chosenCharacter.charAvatar" alt="">
+            <div class="image-input">
+              <input type="file" id="file" name="file" (change)="onFileChange($event, 'charAvatar')" #fileInput>
+            </div>
+          </div>
+          <h5 class="collapse-header" (click)="showCaption = !showCaption">Leveling caption</h5>
+
+          <div class="collapse-content" *ngIf="showCaption">
+            <div class="radio">
+              <label for="characterImageCustom">
+                <input type="radio" id="characterCaptionCustom" [(ngModel)]="model.characterCaptionCustom" value="custom" name="characterCaption" value="radio5"> Custom
+              </label>
+              <label for="characterImageInherit">
+                <input type="radio" id="characterCaptionInherit" [(ngModel)]="model.characterCaptionInherit" value="inherit" name="characterCaption" value="radio6"> Inherit
+              </label>
+            </div>
+
+            <div class="">
+              <input type="text" [(ngModel)]="model.characterCaptionInput" name="characterCaptionInput">
+            </div>
+          </div>
+
+          <h5 class="collapse-header" (click)="showText = !showText">Leveling text</h5>
+          <div class="collapse-content" *ngIf="showText">
+            <div class="radio">
+              <label for="characterImageCustom">
+                <input type="radio" id="characterTextCustom" [(ngModel)]="model.characterTextCustom" value="custom" name="characterText"> Custom
+              </label>
+              <label for="characterImageInherit">
+                <input type="radio" id="characterTextInherit" [(ngModel)]="model.characterTextInherit" value="inherit" name="characterText"> Inherit
+              </label>
+            </div>
+
+            <div class="">
+              <textarea type="text" [(ngModel)]="model.characterTextarea" name="characterTextarea"></textarea>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="saveCharSettigs()" type="submit" >Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

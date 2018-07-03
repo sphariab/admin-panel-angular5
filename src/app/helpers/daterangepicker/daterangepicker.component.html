@@ -1,0 +1,10 @@
+<button class="btn btn-success"
+        name="daterangeInput"
+        daterangepicker
+        [options]="options"
+        (selected)="selectedDate($event)"
+       (cancelDaterangepicker)="calendarCanceled($event)"
+       (applyDaterangepicker)="calendarApplied($event)"
+>Choose Date</button>
+<p>daterange start: {{daterange.start | date : format : 'shortDate' }}</p>
+<p>daterange end: {{daterange.end | date : format : 'shortDate'}}</p>

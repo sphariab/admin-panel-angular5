@@ -1,0 +1,73 @@
+<header class="app-header navbar">
+  <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
+  <a class="navbar-brand" href="#"></a>
+  <ul class="nav navbar-nav mr-auto d-md-down-none">
+    <li class="nav-item">
+      <a class="nav-link navbar-toggler" href="#" appSidebarToggler>&#9776;</a>
+    </li>
+  </ul>
+</header>
+
+<div class="app-body">
+  <div class="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">
+            <i class="icon-speedometer"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/content-tools']">
+            <i class="icon-speedometer"></i>
+            Content Tools
+          </a>
+        </li>
+   <!--     <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>-->
+          <!--<a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Content Tools</a>-->
+        <!--  <ul class="nav-dropdown-items">-->
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/faq']"><i class="icon-puzzle"></i> Faq</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/blog']"><i class="icon-puzzle"></i> Blog</a>
+            </li>
+        <li class="nav-item nav-dropdown" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" appNavDropdownToggle><i class="icon-puzzle"></i> Characters and Story</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/leveling-speed-mode']"><i class="icon-puzzle"></i> Leveling speed mode</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/leveling-settings']"><i class="icon-puzzle"></i> Leveling settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/leveling-table']"><i class="icon-puzzle"></i> Leveling table</a>
+              </li>
+            </ul>
+        </li>
+       <!--   </ul>-->
+ <!--       </li>-->
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+</div>
+
+<footer class="app-footer">
+  <a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
+  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
+</footer>

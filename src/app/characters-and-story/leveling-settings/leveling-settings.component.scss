@@ -1,0 +1,14 @@
+
+
+.btn-wrapper{
+  float: right;
+}
+
+.table{
+  input{
+    border: 0;
+    &.active{
+      border:1px solid #000;
+    }
+  }
+}

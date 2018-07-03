@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Content Tools</strong>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xs-12 col-12 col-md-3 form-group">
+        <app-daterangepicker></app-daterangepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-12 col-md-3 form-group">
+        <input class="btn btn-outline-info" type="button" value="Eng">
+        <input class="btn btn-outline-info" type="button" value="Sv">
+        <input class="btn btn-outline-info" type="button" value="No">
+      </div>
+    </div>
+    <div class="row" *ngFor="let zodiacSign of zodiacSigns;">
+      <div class="col-xs-12 col-12 col-md-3 form-group">
+        <div class="input-group input-wrapper-zodiacs">
+          <label for="{{zodiacSign.name}}">{{zodiacSign.name}}</label>
+          <input type="text" id="{{zodiacSign.name}}" class="form-control" [(ngModel)]="zodiacSign.prediction">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-12 col-md-3 form-group">
+        <input class="btn btn-success" type="button" value="Save" (click)="saveZodiacs()">
+        <input class="btn btn-primary" type="button" value="Clear" (click)="clearZodiacs()">
+      </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa fa-align-justify"></i> Leveling Table
+        </div>
+        <div class="form-group row">
+          <div class="col-md-9">
+            <select #groupsElem (change)="setGroup(groupsElem.value)" id="select1" name="select" class="form-control">
+              <option *ngFor="let group of groups" [value]="group.name">
+                {{group.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-sm">
+          <thead>
+          <tr>
+            <th>Level</th>
+            <th>Total exp to gain level</th>
+            <th>Star Dust reward</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let setting of settings">
+            <td><input type="text"
+                [(ngModel)]="setting.id"
+                [disabled]="true">
+            </td>
+            <td><input type="text"
+                       [disabled]="!onEdit"
+                       [ngClass]="{'active': onEdit}"
+                       [(ngModel)]="setting.exp"
+                       >
+            </td>
+            <td>
+              <input type="text"
+                     [disabled]="!onEdit"
+                     [ngClass]="{'active': onEdit}"
+                     [(ngModel)]="setting.reward">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="btn-wrapper">
+          <button type="button" *ngIf="!onEdit" (click)="onEdit=!onEdit" class="btn btn-primary">Edit</button>
+          <button type="button" *ngIf="onEdit" (click)="onEdit=!onEdit" class="btn btn-default">Cancel</button>
+          <button type="button" *ngIf="onEdit" (click)="saveSettings(settings)" class="btn btn-primary">Save</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa fa-align-justify"></i> Character leveling settings
+        </div>
+        <div class="form-group row">
+          <div class="col-md-9">
+            <select #groupsElem (change)="setGroup(groupsElem.value)" id="select2" name="select" class="form-control">
+              <option *ngFor="let group of groups" [value]="group.name">
+                {{group.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <div class="radio" *ngFor="let character of characters">
+              <label for="radio1">
+                <input type="radio" id="radio1" name="radios" value="option1"> {{character.name}}
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radio2">
+                <input type="radio" id="radio2" name="radios" value="option2"> Taurus
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radio3">
+                <input type="radio" id="radio3" name="radios" value="option3"> Gemini
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" [routerLink]="['/leveling-table']">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
